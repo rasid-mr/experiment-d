@@ -1,30 +1,74 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <!-- the header -->
+
+  <the-header></the-header>
+
+  <router-view></router-view>
+
+  <!-- the footer -->
+
+  <the-footer></the-footer>
 </template>
+<script>
+import TheHeader from "./components/Layout/TheHeader";
+import TheFooter from "./components/Layout/TheFooter";
+export default {
+  components: {
+    TheHeader,
+    TheFooter,
+  },
 
+  // watch: {
+  //   $route(to, from) {
+  //     console.log(to);
+  //     if (from.path === "/") {
+  //       this.transitionName = "drain";
+  //     } else {
+  //       this.transitionName = "drain";
+  //     }
+  //   },
+  // },
+};
+</script>
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import "./assets/styles/base/_base.scss";
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-out;
 }
 
-#nav {
-  padding: 30px;
+// .slither-enter-active,
+// .slither-leave-active {
+//   transition: transform 1s;
+// }
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+// .slither-enter,
+// .slither-leave-to {
+//   transform: translateX(-100%);
+// }
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+// .slither-enter-to,
+// .slither-leave {
+//   transform: translateX(0);
+// }
+
+// .drain-enter-active,
+// .drain-leave-active {
+//   transition: transform 1s;
+// }
+
+// .drain-enter,
+// .drain-leave-to {
+//   transform: translateY(100%);
+// }
+
+// .drain-enter-to,
+// .drain-leave {
+//   transform: translateY(0);
+// }
 </style>

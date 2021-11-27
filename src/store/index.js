@@ -1,12 +1,14 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
+import articleList from "./Article/index";
 
-export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
+const store = createStore({
   modules: {
-  }
-})
+    article: articleList,
+  },
+  state() {
+    return {};
+  },
+  getters: {},
+});
+
+export default store;
