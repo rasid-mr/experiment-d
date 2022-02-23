@@ -9,6 +9,7 @@ const routes = [
     path: "/article-list",
     name: "ArticleList",
     component: ArticleList,
+    
   },
   {
     path: "/article-list/:id/",
@@ -36,10 +37,15 @@ const router = createRouter({
       return savedPosition;
     }
     return { left: 0, top: 0 };
+
   },
+ 
   behavior: "smooth",
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
+
+ 
+ 
 
 export default router;

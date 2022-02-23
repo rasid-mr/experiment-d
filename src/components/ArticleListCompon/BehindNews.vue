@@ -1,5 +1,5 @@
 <template>
-  <span>
+  <div>
     <h2 class="header">
       BEHIND THE NEWS
     </h2>
@@ -16,6 +16,10 @@
           Around the wourld, eid celebrated most sophisticatedl Lorem ipsum
           dolor sit amet consectetur adipisicing elit. Distinctio, suscipit.
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus
+          Distinctio, suscipit. Lorem ipsum dolor, sit amet consectetur
+          adipisicing elit. Distinctio, suscipit. Lorem ipsum dolor, sit amet
+          consectetur adipisicing elit. Distinctio, suscipit. Lorem ipsum dolor,
+          sit amet consectetur adipisicing elit.
         </p>
       </div>
     </div>
@@ -31,7 +35,7 @@
         <p>Natural Ability Grow up</p>
       </div>
     </div>
-  </span>
+  </div>
 </template>
 
 <script>
@@ -39,43 +43,105 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+@import "../../assets/styles/abstracts/_functions.scss";
+@import "../../assets/styles/abstracts/_mixins.scss";
+
+$header-font-size: 3rem;
 .header {
-  margin-left: 40rem;
-  font-size: 2.4rem;
+  display: grid;
+  place-content: center;
+  font-size: 3rem;
   box-sizing: border-box;
-  margin-top: 4rem;
+  margin: 15rem 0 8rem 0;
+  // line-height: 5;
 }
 .behind {
-  display: flex;
-
+  display: block;
+  margin-top: 3rem;
+  @media (max-width: 420px) {
+    padding-bottom: 3rem;
+  }
   &-image {
     display: block;
     height: 30rem;
     width: 30rem;
-    border-radius: 50%;
-    margin-top: 3rem;
+    margin-bottom: 2rem;
+    float: left;
+
+    clip-path: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    @include respond(tab-port) {
+      height: 25rem;
+      width: 25rem;
+    }
+    @include respond(phone) {
+      height: 20rem;
+      width: 20rem;
+      margin-bottom: 5rem;
+    }
+
+    // &::after {
+    //   content: "";
+    //   clear: both;
+    //   display: table;
+    // }
   }
   &-explain {
-    margin-left: 5rem;
+    // margin-top: 5rem;
+    width: 75%;
+    min-height: 30rem;
+    // margin: -2rem 0 0 4rem;
+    transform: translate(4rem, -2rem);
+    @include respond(tab-land) {
+      width: 90%;
+    }
+    @include respond(tab-port) {
+      width: 95%;
+      transform: translate(2rem, -2rem);
+    }
+
     &-header {
       font-size: 3rem;
-      margin-top: 3rem;
-      width: 40%;
+      @include respond(tab-port) {
+        font-size: 2.4rem;
+      }
+      &::before {
+        content: "";
+        position: relative;
+        display: block;
+        inset: 0;
+        height: 2rem;
+      }
     }
     &-fulltext {
-      font-size: 2.3rem;
-      color: rgb(111, 111, 111);
-      margin-top: 1rem;
-      width: 60%;
+      font-size: #{scaleValue(24)};
+      color: rgb(59, 59, 59);
+      margin-top: 3rem;
       line-height: 1.5;
+      word-spacing: 1.5px;
+      width: 96%;
+      @include respond(tab-land) {
+        font-size: 1.8rem;
+      }
+      @include respond(phone) {
+        font-size: 1.4rem;
+      }
     }
   }
 }
 .last {
   display: flex;
-  margin-top: 2rem;
+  margin-top: 7rem;
+  @include respond(phone) {
+    margin-left: 1.4rem;
+  }
   &-one {
     margin-right: 8.5rem;
+    @include respond(phone) {
+      margin-right: 5rem;
+    }
   }
   &-one > h5,
   &-two > h5 {

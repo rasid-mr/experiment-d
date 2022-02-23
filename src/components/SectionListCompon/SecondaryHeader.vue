@@ -2,7 +2,7 @@
   <div class="secondary">
     <div class="secondary-start">
       <div class="secondary_header">
-        <span>{{ typeId }} {{ idOne }}</span>
+        <span>{{ typeId }}</span>
 
         <router-link
           :to="{
@@ -36,6 +36,11 @@ export default {
 <style lang="scss" scoped>
 .secondary_header {
   padding: 2rem 0;
+
+  & span {
+    text-transform: uppercase;
+    color: #757575;
+  }
 }
 .secondary_header-main {
   text-decoration: none;
@@ -43,15 +48,19 @@ export default {
   position: relative;
   cursor: pointer;
   width: 30rem;
+  // border-bottom: 2px solid red;
+  
+   
   &::after {
-    content: "";
-    width: 100%;
-    position: absolute;
-    background: rgb(171, 171, 171);
-    top: 2.5rem;
-    left: 0;
-    height: 1px;
-    display: table;
+   content: '';
+    display: block;
+    position: relative;
+    margin: 0;
+    padding-bottom: .5rem;
+ 
+    border-bottom: 1px solid #E9E9E9;
+    
+     
   }
 }
 .secondary-image {

@@ -10,26 +10,18 @@
             </h2></label
           >
           <div class="footer-inside-form">
-            <input
-              id="footer-email"
-              type="text"
-              placeholder="Enter Your Email"
-              class="footer-email-input"
-            />
-            <button class="footer-email-button">Sign up</button>
+            <the-email
+              class="width-3"
+              placeholder="Enter your Email"
+            ></the-email>
           </div>
         </form>
         <div class="footer-follow">
           <label for="icon" class="footer-follow-us">Follow Us</label>
           <legend class="footer-follow-social">
-            <i
-              id="icon"
-              class="fab fa-facebook-f footer-follow-social-facebook"
-            ></i>
-            <i
-              id="icon"
-              class="fab fa-flipboard footer-follow-social-flipboard"
-            ></i>
+            <img class="footer-follow-social-facebook" src="../../assets/image/facebook-svgrepo-com.svg" alt="Facebook Logo">
+            <img class="footer-follow-social-flipboard" src="../../assets/image/flipboard-svgrepo-com.svg" alt="Flipboard Logo">
+
           </legend>
         </div>
       </div>
@@ -60,10 +52,21 @@
 </template>
 
 <script>
-export default {};
+import TheEmail from "../Layout/TheEmail.vue";
+export default {
+  components: {
+    TheEmail,
+  },
+};
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import "../../assets/styles/abstracts/_mixins.scss";
+@import "../../assets/styles/abstracts/_functions.scss";
+ 
+
+  
+
 .footer-dotdash {
   padding: 2rem 0;
   font-size: 1.5rem;
@@ -83,48 +86,69 @@ export default {};
   text-decoration: none;
   color: black;
 }
-.footer-section {
-  margin-top: 7.5rem;
-  margin-left: 4rem;
-  font-size: 1.2rem;
 
-  & * {
-    margin-bottom: 1.2rem;
-    color: white;
-  }
-}
 .footer {
   margin-top: 10rem;
   color: white;
   background-color: #333;
-  height: 24rem;
-  display: flex;
+   
+   
+  min-height: 24rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 
-  &-inside-form {
-    display: flex;
+  @include respond(tab-port) {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    grid-template-rows: minmax(30rem, 25vh) 15rem;
+    grid-auto-flow: column;
+    justify-items: center;
+    // width: 100%;
   }
+  &-section {
+    font-size: 1.2rem;
+    // margin-left: #{scaleValue(60)};
+    display: grid;
+     
+    justify-items: center;
+    align-content: center;
+
+
+    @include respond(tab-port) {
+      // font-size: 1rem;
+     
+      margin: 0;
+      display: grid;
+      grid-auto-flow: column;
+      width: 70%;
+       justify-content: center;
+       align-items: center;
+       grid-template-columns: repeat(2, 15rem);
+       grid-template-rows: repeat(2, 1fr);
+       
+        
+    }
+    
+   
+    & * {
+      // margin-bottom: 1.2rem;
+       margin:.5rem 0 .5rem 0;
+      color: white;
+
+     @include respond(tab-port) {
+       margin: 0;
+       
+     }
+    }
+  }
+
   &-email-header {
     font-size: 2rem;
     margin: 1rem 0;
   }
-  &-email-input {
-    width: 53.334rem;
-    height: 4.2rem;
-    padding: 0.94rem 1.04rem;
-    font-size: 2rem;
-  }
-  &-email-button {
-    font-size: 1.6rem;
-    color: #cccccc;
-    background-color: #c41e24;
-    outline: none;
-    cursor: pointer;
-    border: none;
-    width: 10.6rem;
-  }
 
   &-follow {
-    margin-top: 1rem;
+    margin-top: 5rem;
   }
 
   &-follow-social {
@@ -148,7 +172,7 @@ export default {};
     &-flipboard {
       margin-left: 0.4rem;
       color: white;
-      background-color: rgb(225, 2, 2);
+      background-color: #cd2900;
       display: flex;
       width: 4.2rem;
       height: 4.2rem;
@@ -164,6 +188,8 @@ export default {};
 }
 .footer-logo {
   font-size: 2.5rem;
+  margin-top: 1.5rem;
+
   &-sub {
     color: #ffe186;
   }

@@ -2,13 +2,17 @@
   <div>
     <div class="parent">
       <div>
-        <p class="parent_type">
-          {{ product.type }} <span class="parent_type-arrow">></span>
+        <div class="parent_type">
+          {{ product.type  }} 
+          <span>
+          <img src="../assets/image/chevron-forward-outline.svg" class="parent_type-arrow" alt="forward">
+
+          </span>
           {{ product.subtype }}
-        </p>
+        </div>
         <h1 class="parent_header">{{ product.header }}</h1>
         <img :src="image" alt="article-hero-imgae" class="parent-image" />
-        <p class="parent_date">{{ date }}</p>
+        <p class="parent_date">{{ formatDate }}</p>
         <p class="parent_fulltext">{{ product.fullText }}</p>
       </div>
     </div>
@@ -31,8 +35,9 @@ import SecondaryHeader from "../components/SectionListCompon/SecondaryHeader";
 export default {
   components: {
     SecondaryHeader,
-  },
+  }, 
   props: ["id"],
+ 
   data() {
     return {
       selectedArticle: null,
@@ -58,7 +63,7 @@ export default {
       ].filter((a) => a.type == this.$route.query.type));
     },
     product() {
-      console.log(this.$route.query.type);
+      
       return (this.selectedArticleSec = this.$store.getters[
         "article/articles"
       ].find((a) => a.id == this.$route.params.id));
@@ -68,45 +73,84 @@ export default {
     },
     date() {
       return new Date().toISOString();
+
+      
+
+ 
     },
+    formatDate() {
+      const dateString = '2021-05-14T04:00:00Z'
+       
+   const options = { year: "numeric", month: "long", day: "numeric" }
+  return new Date(dateString).toLocaleDateString(undefined, options)
+   
+    }
   },
 
   methods: {},
+   
+
 };
 </script>
 
 <style scoped lang="scss">
+@import "../../src/assets/styles/abstracts/_functions.scss";
+@import "../../src/assets/styles/abstracts/_mixins.scss";
 .bottom {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 .parent {
+     @include respond(phone) {
+      margin-left: 2rem;
+    }
   &_type {
-    color: red;
+    color: rgb(71, 71, 71);
     font-size: 1.2rem;
     font-weight: 600;
     &-arrow {
-      vertical-align: middle;
+     margin-top: 5rem;
+    display: inline-block;
+    width: 1.2rem;
+    vertical-align: sub;
+
     }
   }
   &_header {
     font-size: 4rem;
     color: rgb(27, 27, 27);
+    margin: 0 0 3rem 0;
   }
   &-image {
-    display: block;
-    height: 50rem;
-    width: 80rem;
+     display: block;
+    width: #{scaleValue(800)};
+    aspect-ratio: 10/9;
     object-fit: cover;
+    @include respond(tab-land) {
+     width: #{scaleValue(900)};
+   }
+   @include respond(phone) {
+     width: #{scaleValue(1000)};
+   }
+     
   }
   &_date {
     margin-top: 4rem;
     font-size: 2rem;
   }
   &_fulltext {
+    width: 70%;
     font-size: 1.8rem;
     margin-top: 5rem;
+    line-height: 1.4;
+    word-spacing: 1.6px;
+    
+       @include respond(phone) {
+       width: 85%;
+    }
+ 
   }
 }
+
 </style>

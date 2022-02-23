@@ -4,45 +4,70 @@
       <label for="email"
         ><h2 class="email-header">Learn Something New Everyday</h2></label
       >
-      <input
-        id="email"
-        type="text"
-        placeholder="Enter Your Email"
-        class="email-input"
-      />
-      <div class="sign">
-        <button class="email-button">Sign up</button>
-      </div>
+      <the-email placeholder="Enter your Email"></the-email>
+      
     </form>
+    <div class="social">
+
+ 
     <div class="email-image">
-      <img
-        src="https://www.thoughtco.com/static/3.66.0/image/newsletter.png"
-        alt="thoughtco"
-        class="email-image-1"
-      />
+       <router-link to="/">
+        <h2 class="header_logo">
+          Thought<span class="header_logo-sub">Co.</span>
+        </h2></router-link
+      >
     </div>
     <div class="follow">
       <label for="icon" class="follow-us">Follow Us</label>
       <legend class="follow-social">
-        <i id="icon" class="fab fa-facebook-f follow-social-facebook"></i>
-        <i id="icon" class="fab fa-flipboard follow-social-flipboard"></i>
+         <img class="footer-follow-social-facebook" src="../../assets/image/facebook-svgrepo-com.svg" alt="Facebook Logo">
+            <img class="footer-follow-social-flipboard" src="../../assets/image/flipboard-svgrepo-com.svg" alt="Flipboard Logo">
+        
       </legend>
+    </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import TheEmail from '../Layout/TheEmail.vue'
+export default {
+  components: {
+    TheEmail
+  }
+};
 </script>
 
 <style lang="scss" scoped>
+@import "../../assets/styles/abstracts/_mixins.scss";
+@import "../../assets/styles/abstracts/_functions.scss";
+@include respond(tab-port) {
+ 
+}
+
+.social {
+  // background-color: red;
+  display: grid;
+  width: 100%;
+  grid-auto-flow: column;
+  justify-content: space-evenly;
+   margin-top: 3rem;
+  @include respond(phone) {
+    display: none;
+  }
+}
 .follow {
-  margin-left: 9.5rem;
-  margin-top: 4rem;
+  // margin-left: 9.5rem;
+  // margin-top: 4rem;
+  justify-self: center;
   font-size: 2.1rem;
   font-weight: 700;
   &-social {
     display: flex;
+
+    // @include respond(tab-port) {
+    //   display: none;
+    // }
 
     &-facebook {
       color: rgb(255, 255, 255);
@@ -75,23 +100,17 @@ export default {};
     }
   }
 }
-.email-image {
-  &-1 {
-    display: block;
-    height: auto;
-    margin-left: 25rem;
-    margin-top: 1.1rem;
-    width: 17.5rem;
-  }
-}
+
 .email {
-  width: 120rem;
-  height: 14.846rem;
+  max-width: 120rem;
+  min-height: 14.846rem;
   background-color: #e5ddcf;
-  margin: 2rem 0;
+  margin: 10rem 0 2rem 0;
   padding: 1.12rem 2.56rem;
   box-sizing: border-box;
   display: flex;
+   
+    
 
   &-header {
     font-size: 1.8rem;
@@ -99,25 +118,19 @@ export default {};
     font-weight: 1200;
     margin-top: 3rem;
   }
-  &-input {
-    width: 53.334rem;
-    height: 4.2rem;
-    padding: 0.94rem 1.04rem;
-    font-size: 2rem;
-  }
-  &-button {
-    height: 4.15rem;
-    // padding: 1.4rem 1.04rem;
-    width: 10.66rem;
-    font-size: 1.6rem;
-    color: #cccccc;
-    background-color: #c41e24;
-    outline: none;
-    cursor: pointer;
-    border: none;
-    position: absolute;
-    top: 93.6rem;
-    left: 71.7rem;
+   
+}
+.header_logo {
+  font-size: 3rem;
+  text-decoration: none;
+  color: black;
+ 
+   
+   @include respond(tab-port) {
+     display: none;
+   }
+  &-sub {
+    color: #ffe186;
   }
 }
 </style>

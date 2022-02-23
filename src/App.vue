@@ -1,11 +1,14 @@
 <template>
   <!-- the header -->
-
+  <div v-for="i in 2" :key="i">
+<!-- {{mix[i]}} -->
+<!-- {{i}} -->
+  </div>
   <the-header></the-header>
 
   <router-view></router-view>
 
-  <!-- the footer -->
+  
 
   <the-footer></the-footer>
 </template>
@@ -16,6 +19,12 @@ export default {
   components: {
     TheHeader,
     TheFooter,
+  },
+  data() {
+    return {
+       mix:{1:1,
+      2:2, 3:3, 4:4},
+    }
   },
 
   // watch: {
@@ -32,6 +41,20 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/styles/base/_base.scss";
+* {
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  overflow-x: hidden;
+}
+.big {
+  font-size: 2.2rem;
+  padding-bottom: 1rem;
+  // color: #232323;
+}
+.uppercase {
+  text-transform: uppercase;
+}
 
 .fade-enter-from,
 .fade-leave-to {

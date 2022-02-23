@@ -1,36 +1,9 @@
 <template>
   <div>
     <hr class="border-top" />
-    <div class="primary">
-      <div>
-        <img
-          class="primary_sub-main-card-logo small-margin"
-          src="https://www.thoughtco.com/static/3.64.0/image/hp-science,tech,math.png"
-          alt="science logo"
-        />
-      </div>
-      <div>
-        <img
-          class="primary_sub-main-card-logo small-margin"
-          src="https://www.thoughtco.com/static/3.64.0/image/hp-humanities.png"
-          alt="science logo"
-        />
-      </div>
-      <div>
-        <img
-          class="primary_sub-main-card-logo small-margin"
-          src="https://www.thoughtco.com/static/3.64.0/image/hp-languages.png"
-          alt="science logo"
-        />
-      </div>
-      <div>
-        <img
-          class="primary_sub-main-card-logo small-margin"
-          src="https://www.thoughtco.com/static/3.64.0/image/hp-resources.png"
-          alt="science logo"
-        />
-      </div>
-    </div>
+    <!-- <div class="primary">
+      
+    </div> -->
     <div class="primary">
       <!-- <p>{{ article[0].id }}</p>
      <p>PrimaryContent</p>
@@ -38,8 +11,22 @@
       <li v-if=art.type = 'science' @click="toFullArticle">{{ art.header }}</li>
     </div>
     <p>I am mohtasim.</p>
+
       -->
+      <!-- science image -->
+      <!-- <div>
+      
+      </div> -->
+      <!-- finish science image -->
       <div class="primary_sub">
+        <div>
+          <img
+            class="primary_sub-main-card-logo small-margin"
+            src="https://www.thoughtco.com/static/3.64.0/image/hp-science,tech,math.png"
+            alt="science logo"
+          />
+        </div>
+
         <div class="primary_sub-main">
           <div class="primary_sub-main-card">
             <router-link to="/section-list/science">
@@ -58,18 +45,27 @@
             <div class="primary_sub-main-card-grid">
               <router-link-to
                 v-for="art in article"
+                class="border-middle science"
                 :key="art.id"
                 :id="art.id"
-                resources="science"
+                 :number="art.number"
+                 resources="science"
                 :type="art.type"
                 :header="art.header"
               ></router-link-to>
             </div>
-            <hr />
+            
           </div>
         </div>
       </div>
       <div class="primary_sub">
+         <div>
+        <img
+          class="primary_sub-main-card-logo small-margin"
+          src="https://www.thoughtco.com/static/3.64.0/image/hp-humanities.png"
+          alt="science logo"
+        />
+      </div>
         <div class="primary_sub-main">
           <div class="primary_sub-main-card">
             <router-link to="/section-list/humanities">
@@ -85,8 +81,10 @@
             <div class="primary_sub-main-card-grid">
               <router-link-to
                 v-for="art in article"
+                class="border-middle humanities"
                 :key="art.id"
                 :id="art.id"
+                :number="art.number"
                 resources="humanities"
                 :type="art.type"
                 :header="art.header"
@@ -96,6 +94,13 @@
         </div>
       </div>
       <div class="primary_sub">
+         <div>
+        <img
+          class="primary_sub-main-card-logo small-margin"
+          src="https://www.thoughtco.com/static/3.64.0/image/hp-languages.png"
+          alt="science logo"
+        />
+      </div>
         <div class="primary_sub-main">
           <div class="primary_sub-main-card">
             <router-link to="/section-list/language">
@@ -118,7 +123,9 @@
               <router-link-to
                 v-for="art in article"
                 :key="art.id"
+                class="border-middle language"
                 :id="art.id"
+                :number="art.number"
                 resources="language"
                 :type="art.type"
                 :header="art.header"
@@ -128,6 +135,14 @@
         </div>
       </div>
       <div class="primary_sub">
+       
+       <div>
+        <img
+          class="primary_sub-main-card-logo small-margin"
+          src="https://www.thoughtco.com/static/3.64.0/image/hp-resources.png"
+          alt="science logo"
+        />
+      </div>
         <div class="primary_sub-main">
           <div class="primary_sub-main-card">
             <router-link to="/section-list/resources">
@@ -153,8 +168,10 @@
                 </router-link> -->
                 <router-link-to
                   v-for="art in article"
+                  class="border-middle resources"
                   :key="art.id"
                   :id="art.id"
+                  :number="art.number"
                   resources="resources"
                   :type="art.type"
                   :header="art.header"
@@ -181,6 +198,21 @@ export default {
     EmailCard,
     BehindNews,
   },
+  mounted() {
+    const resource = document.querySelector('.resources');
+    const science = document.querySelector('.science');
+    const humanities = document.querySelector('.humanities');
+    const language = document.querySelector('.language');
+
+    [resource, science, humanities, language].forEach(el => {
+    el.childNodes[1].firstChild.classList.add('bold-font')
+
+    })
+
+     
+    
+    
+  },
   computed: {
     article() {
       return this.$store.getters["article/articles"];
@@ -191,10 +223,9 @@ export default {
 
 <style lang="scss">
 @import "../assets/styles/abstracts/_mixins.scss";
-.border-middle {
-  border-bottom: 1px solid #c4c4c4;
-  // padding-bottom: 2rem;
-}
+@import "../assets/styles/abstracts/_variables.scss";
+@import "../assets/styles/abstracts/_functions.scss";
+ 
 .border-top {
   border-top: 3px solid #232323;
 }
@@ -205,31 +236,79 @@ a {
 .primary {
   display: grid;
   justify-content: space-evenly;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(25%, 15rem));
+   
   // column-gap: 0.5rem;
   background-color: rgb(241, 241, 241);
   margin-top: -0.2rem; // for solid line after heading
   color: #232323;
-  &_sub {
-    height: auto;
-    justify-self: center;
-    width: 27.3rem;
-    z-index: 0;
+  font-family: 'Roboto', sans-serif;
+  // height: 100%;
+  
 
+  @include respond(tab-land) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include respond(phone) {
+    grid-template-columns: 1fr;
+    gap: 8rem 0;
+     
+  }
+  
+  &_sub {
+  
+    justify-self: center;
+    width: 90%;
+    z-index: 0;
+   
+    @include respond(tab-land) {
+      // max-width: 100%;
+      width: 95%;
+    }
+    &-main {
+      width: 100%;
+    }
     &-main-card {
       background-color: rgb(255, 255, 255);
       padding: 1rem;
-      z-index: 0;
+      // z-index: 0;
+      width: 100%;
+       
+
+      &-grid {
+        display: grid;
+        grid-template-rows: repeat(4, minmax(10rem, 15vh));
+        align-items: center;
+        
+
+        @include respond(tab-land) {
+         grid-template-rows: repeat(4, minmax(7rem, 10vh));
+
+        }
+        @include respond(tab-port) {
+         grid-template-rows: repeat(4, minmax(8rem, 9vh));
+
+        }
+        
+        @include respond(phone) {
+         grid-template-rows: repeat(4, minmax(5rem, 8vh));
+        }
+      }
 
       &-logo {
         display: block;
         height: 11.3rem;
-        width: 19rem;
+        max-width: 19rem;
         margin: 0 auto;
+        @include respond(tab-land) {
+          width:100%;
+        }
       }
       &-header {
         text-align: center;
         color: #282828;
+        
         font-size: 2rem;
         padding: 2rem 0;
       }
@@ -237,24 +316,64 @@ a {
   }
 }
 .small {
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding-top: 1rem;
   // columns: inherit;
-  color: #8a8a8a;
+  color: #5c5c5c;
 }
 .small-margin {
   margin-top: 5.4rem;
-  z-index: 5;
+   
 }
-.big {
-  font-size: 2.2rem;
-  padding-bottom: 1rem;
-  color: #232323;
-}
+
 .science-sub-logo {
   display: block;
   margin: 0 auto;
-  height: 16.9rem;
-  width: 25.3rem;
+  min-height: 16.9rem;
+  max-width: 100%;
+  
+  object-fit: cover;
+
+  @include respond(tab-land) {
+    width: 80%;
+    object-fit: cover;
+  }
+  @include respond(phone) {
+    max-width: 350px;
+    width: 80%;
+    object-fit: cover;
+  }
 }
+ .border-middle {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: fade;
+    
+  
+   
+     
+  &::after {
+    content: '';
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    // width: 80%;
+    // top: 20px;
+    outline: 1px solid #E9E9E9;
+    // border-bottom: 1px solid ;
+  }
+  &:last-of-type {
+     &::after {
+       outline: none;
+     }
+  }
+}
+
+.bold-font {
+  font-weight: 700  !important;
+  line-height: 1.5;
+}
+
+ 
 </style>
