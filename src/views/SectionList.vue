@@ -54,6 +54,7 @@ export default {
 .parent {
   display: flex;
   flex-wrap: wrap;
+   
   justify-content: center;
 }
 </style>

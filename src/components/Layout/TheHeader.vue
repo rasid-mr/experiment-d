@@ -26,6 +26,9 @@
         <router-link @click="hideNav" class="router-link" tag="li" to="/section-list/resources"
           >Resources</router-link
         >
+        <router-link @click="hideNav" class="router-link" tag="li" to="/section-list/humanities"
+          >Humanities</router-link
+        >
         <router-link @click="hideNav" class="router-link" tag="li" to="/about"
           >About</router-link
         >
@@ -202,19 +205,19 @@ export default {
 .router-link {
   text-decoration: none;
   padding: 1.3rem 1.8rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: black;
   font-weight: 600;
   position: relative;
   transition: opacity 0.2s;
   @include respond(tab-land) {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
   @include respond(tab-port) {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
    @media (max-width:50em) {
-     font-size: 2.2rem;
+     font-size: 2rem;
    }
   &:hover {
     opacity: 0.7;
@@ -235,6 +238,9 @@ export default {
   justify-self: stretch;
   margin-top: -0.4rem;
   color: black;
+  &:hover {
+    color: #beab72;
+  }
   @include respond(tab-land) {
     font-size: 3.5rem;
   }
@@ -244,7 +250,7 @@ export default {
     align-items: center;
   }
   &-sub {
-    color: #ffe186;
+    color: #beab72;
   }
 }
 </style>

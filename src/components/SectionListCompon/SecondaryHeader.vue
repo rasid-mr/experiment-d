@@ -48,6 +48,9 @@ export default {
   position: relative;
   cursor: pointer;
   width: 30rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   // border-bottom: 2px solid red;
   
    

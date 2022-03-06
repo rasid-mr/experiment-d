@@ -27,6 +27,7 @@
         ></secondary-header>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -58,9 +59,11 @@ export default {
       return this.$route.params.id;
     },
     sectionData() {
+      //  console.log('lost in woods');
       return (this.selectedSection = this.$store.getters[
         "article/articles"
       ].filter((a) => a.type == this.$route.query.type));
+     
     },
     product() {
       
@@ -109,6 +112,7 @@ export default {
     color: rgb(71, 71, 71);
     font-size: 1.2rem;
     font-weight: 600;
+    text-decoration: underline;
     &-arrow {
      margin-top: 5rem;
     display: inline-block;
@@ -138,6 +142,18 @@ export default {
   &_date {
     margin-top: 4rem;
     font-size: 2rem;
+    margin-bottom: .4rem;
+    position: relative;
+    width: fit-content;
+     
+    &::after {
+      content: '';
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    left: 0;
+border-bottom: 1.8px solid rgb(110, 1, 1);
+    }
   }
   &_fulltext {
     width: 70%;
