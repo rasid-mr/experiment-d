@@ -151,7 +151,7 @@ export default {
             
             Written in 1775, the play by Pierre Augustin Caron De Beaumarchais was suppressed by Louis XVI. Beaumarchais was imprisoned, with charges of treason. He later wrote two sequels, The Marriage of Figaro and The Guilty Mother. The Barber of Seville and The Marriage of Figaro were made into operas by Rossini and Mozart.
             Featured Video
-            
+                this is not in there
                 Tragedy and Comedy Masks
                 The Most Controversial Plays of the 20th Century
                 The Adventures of Huckleberry Finn
