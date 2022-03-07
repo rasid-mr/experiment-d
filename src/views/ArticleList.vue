@@ -376,11 +376,14 @@ a {
   }
 }
 .border-middle {
+  position: relative;
   &::after {
     content: "";
     display: block;
-    position: relative;
-    margin: 0;
+    position: absolute;
+    width: 100%;
+    top: 125%;
+    left: 0;
     padding: 0;
     // width: 80%;
     // top: 20px;
